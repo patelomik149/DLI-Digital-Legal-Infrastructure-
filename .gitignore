@@ -1,0 +1,44 @@
+# Local secrets and environment settings
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+**/*auth*.json
+**/*auth*.json.*
+**/*creds*.json
+**/*creds*.json.*
+**/*keys*.json
+**/*keys*.json.*
+**/*.keys
+**/*.rejected
+**/*session*/
+**/*session*_backup/
+**/*qr*.png
+
+# Local data and Python artifacts
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+**/__pycache__/
+**/*.py[cod]
+
+# Flutter/Dart generated files
+**/.dart_tool/
+**/.flutter-plugins-dependencies
+**/.pub-cache/
+**/.pub/
+**/build/
+**/coverage/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+**/.idea/
+**/.vscode/
+
+# Accidental WhatsApp key dump
+/backend/--help
+/backend/--help.keys
+
