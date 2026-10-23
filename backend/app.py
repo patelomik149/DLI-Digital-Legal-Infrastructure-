@@ -35,22 +35,42 @@ load_dotenv()
 # FLASK APP
 # ============================================================
 
+# @asynccontextmanager
+# async def lifespan(app: FastAPI):
+#     init_user_database()
+#     init_kyc_database()
+
+#     whatsapp_thread = threading.Thread(
+#         target=start_whatsapp,
+#         daemon=True,
+#     )
+#     whatsapp_thread.start()
+
+#     print()
+#     print("=" * 70)
+#     print("DLI FastAPI backend starting on http://127.0.0.1:5000")
+#     print("=" * 70)
+
+#     yield
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    init_user_database()
-    init_kyc_database()
-
-    whatsapp_thread = threading.Thread(
-        target=start_whatsapp,
-        daemon=True,
+    api_test_mode = (
+        os.getenv("API_TEST_MODE", "false").lower() == "true"
     )
-    whatsapp_thread.start()
 
-    print()
-    print("=" * 70)
-    print("DLI FastAPI backend starting on http://127.0.0.1:5000")
-    print("=" * 70)
+    if api_test_mode:
+        print("DLI API TEST MODE: database initialization and WhatsApp disabled")
+    else:
+        init_user_database()
+        init_kyc_database()
 
+        whatsapp_thread = threading.Thread(
+            target=start_whatsapp,
+            daemon=True,
+        )
+        whatsapp_thread.start()
+
+    print("DLI FastAPI backend starting")
     yield
 
 
@@ -67,6 +87,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/health")
+def health_check():
+    return {
+        "status": "ok",
+        "service": "DLI FastAPI",
+        "mode": "connectivity-test",
+    }
 
 
 # ============================================================
