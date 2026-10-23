@@ -4,3 +4,35 @@ __pycache__/
 whatsapp_session/piwapp_auth.json
 whatsapp_session/piwapp_auth.json.keys
 whatsapp_session/whatsapp_auth.json
+
+
+
+
+# Environment secrets
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# SQLite databases and backups
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.bak
+
+# WhatsApp authentication and session files
+whatsapp_creds.json
+whatsapp_creds.json.keys
+whatsapp_keys.json
+whatsapp_session/
+whatsapp_session_backup/
+
+# Existing authentication files
+whatsapp_session/piwapp_auth.json
+whatsapp_session/piwapp_auth.json.keys
+whatsapp_session/whatsapp_auth.json
