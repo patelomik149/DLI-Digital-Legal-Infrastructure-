@@ -36,3 +36,6 @@ whatsapp_session_backup/
 whatsapp_session/piwapp_auth.json
 whatsapp_session/piwapp_auth.json.keys
 whatsapp_session/whatsapp_auth.json
+
+whatsapp_session/
+whatsapp_session_backup/
